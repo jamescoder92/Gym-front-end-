@@ -1,7 +1,8 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 function Navbar() {
   const navigate = useNavigate();
+  const location = useLocation();
   const token = localStorage.getItem("token");
 
   function handleLogout() {
@@ -9,25 +10,33 @@ function Navbar() {
     navigate("/login");
   }
 
-  return (
-    <nav className="navbar">
-      <Link to="/">Home</Link>
+  function isActive(path) {
+    return location.pathname === path;
+  }
 
-      {token ? (
-        <>
-          <Link to="/dashboard">Dashboard</Link>
-          <Link to="/progress">Progress</Link>
-          <Link to="/classes">Classes</Link>
-          <Link to="/membership">Membership</Link>
-          <Link to="/profile">Profile</Link>
-          <button onClick={handleLogout}>Log Out</button>
-        </>
-      ) : (
-        <>
-          <Link to="/login">Login</Link>
-          <Link to="/register">Register</Link>
-        </>
-      )}
+  if (!token) {
+    return (
+      <nav className="topnav">
+        <Link to="/" className="logo">⚡ FITNESS 360</Link>
+        <div className="topnav-links">
+          <Link to="/login">Log In</Link>
+          <Link to="/register" className="join-btn">Join Now</Link>
+        </div>
+      </nav>
+    );
+  }
+
+  return (
+    <nav className="sidebar">
+      <Link to="/" className="logo">⚡ FITNESS 360</Link>
+      <div className="sidebar-links">
+        <Link to="/dashboard" className={isActive("/dashboard") ? "active" : ""}>Dashboard</Link>
+        <Link to="/classes" className={isActive("/classes") ? "active" : ""}>Classes</Link>
+        <Link to="/progress" className={isActive("/progress") ? "active" : ""}>Progress</Link>
+        <Link to="/membership" className={isActive("/membership") ? "active" : ""}>Membership</Link>
+        <Link to="/profile" className={isActive("/profile") ? "active" : ""}>Profile</Link>
+      </div>
+      <button onClick={handleLogout} className="logout-btn">Log Out</button>
     </nav>
   );
 }
