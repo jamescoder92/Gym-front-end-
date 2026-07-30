@@ -1,70 +1,89 @@
-# Getting Started with Create React App
+# Fitness 360 — Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The React single-page application for **Fitness 360**, a gym management platform. Members can register, log in, browse and book classes, track workouts and progress, and manage their membership plan.
 
-## Available Scripts
+**Live app:** https://gym-front-end-beryl.vercel.app
+**Backend repo:** https://github.com/jamescoder92/Gym-back-end
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Library:** React (Create React App)
+- **Routing:** React Router
+- **API communication:** Native `fetch` via a shared API helper (`src/api/api.js`)
+- **Auth:** JWT stored in `localStorage`, attached to requests via `Authorization: Bearer <token>`
+- **Deployment:** Vercel
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Public pages: Home, Login, Register, Reset Password
+- Protected pages (require login): Dashboard, Classes, Progress, Membership, Profile
+- Conditional navbar based on auth state
+- JWT-based session handling
+- Password reset flow connected to the backend's token-based reset endpoints
+- Global design system: dark background, lime-green accent, Exo 2 / DM Sans typography, glassmorphism cards
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Project Structure
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+src/
+├── api/
+│   └── api.js          # Shared fetch helper (adds JWT, base URL)
+├── components/
+│   └── Navbar.js
+├── context/             # Auth/session context (if applicable)
+├── pages/
+│   ├── Home.js
+│   ├── Login.js
+│   ├── Register.js
+│   ├── ResetPassword.js
+│   ├── Dashboard.js
+│   ├── Classes.js
+│   ├── Progress.js
+│   ├── Membership.js
+│   └── Profile.js
+├── App.js
+└── index.js
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## Local Setup
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+git clone https://github.com/jamescoder92/Gym-front-end.git
+cd Gym-front-end
+npm install
+npm start                # runs on http://localhost:3000
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Environment Variables
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The API base URL is currently set directly in `src/api/api.js`. For local development against a local backend, point it at `http://127.0.0.1:5000`; for production it should point at the deployed backend URL (`https://gym-back-end-afqm.onrender.com`).
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+If migrated to environment variables, create a `.env` file:
 
-## Learn More
+```
+REACT_APP_API_URL=http://127.0.0.1:5000
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Deployment
 
-### Code Splitting
+The app auto-deploys to Vercel on push to `main`. Build command: `npm run build`. Output directory: `build`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## Author
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Built by **[jamescoder92](https://github.com/jamescoder92)** as a capstone project for Moringa School.
 
-### Making a Progressive Web App
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+MIT — see [LICENSE](LICENSE) for details.
