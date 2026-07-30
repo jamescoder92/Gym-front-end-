@@ -1,8 +1,10 @@
+import "../components/Navbar.css";
+
 function Profile() {
   const user = JSON.parse(localStorage.getItem("user") || "{}");
 
   return (
-    <div style={{ padding: "2rem", color: "#fff" }}>
+    <div className="app-content" style={{ padding: "2rem", color: "#fff" }}>
       <h1 style={{ fontFamily: "'Exo 2', sans-serif", marginBottom: "1.5rem" }}>
         Your Profile
       </h1>

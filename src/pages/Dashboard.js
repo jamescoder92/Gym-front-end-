@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
+import "../components/Navbar.css";
 
 function Dashboard() {
   const user = JSON.parse(localStorage.getItem("user") || "{}");
 
   return (
-    <div style={{ padding: "2rem", color: "#fff" }}>
+    <div className="app-content" style={{ padding: "2rem", color: "#fff" }}>
       <h1 style={{ fontFamily: "'Exo 2', sans-serif", marginBottom: "0.5rem" }}>
         Welcome back{user.name ? `, ${user.name}` : ""} 👋
       </h1>
@@ -41,7 +42,6 @@ function DashboardCard({ to, title, desc }) {
         textDecoration: "none",
         color: "#fff",
         backdropFilter: "blur(6px)",
-        transition: "border-color 0.2s ease",
       }}
     >
       <h3 style={{ color: "#B7E400", marginBottom: "0.5rem" }}>{title}</h3>
