@@ -1,4 +1,4 @@
-const BASE_URL = "http://gym-back-end-afqm.onrender.com"
+const BASE_URL = "https://gym-back-end-afqm.onrender.com"
 async function apiRequest(endpoint, options = {}) {
   const token = localStorage.getItem("token");
 
