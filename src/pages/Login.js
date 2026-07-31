@@ -40,8 +40,8 @@ function Login() {
             <div style={styles.statLabel}>Members</div>
           </div>
           <div>
-            <div style={styles.statNum}>150+</div>
-            <div style={styles.statLabel}>Classes</div>
+            {/* <div style={styles.statNum}>150+</div>
+            <div style={styles.statLabel}>Classes</div> */}
           </div>
           <div>
             <div style={styles.statNum}>98%</div>
