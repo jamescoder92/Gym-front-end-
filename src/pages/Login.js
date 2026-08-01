@@ -35,18 +35,6 @@ function Login() {
         <h2 style={styles.tagline}>PUSH YOUR LIMITS</h2>
         <p style={styles.subtext}>Every rep counts. Every session matters.</p>
         <div style={styles.stats}>
-          <div>
-            <div style={styles.statNum}>3,200+</div>
-            <div style={styles.statLabel}>Members</div>
-          </div>
-          <div>
-            {/* <div style={styles.statNum}>150+</div>
-            <div style={styles.statLabel}>Classes</div> */}
-          </div>
-          <div>
-            <div style={styles.statNum}>98%</div>
-            <div style={styles.statLabel}>Satisfaction</div>
-          </div>
         </div>
       </div>
 
